@@ -8,13 +8,13 @@ Just include `rafman.js` in your page. There are no dependencies.
 Rafman.js registers a `Rafman` object in the global namespace.
 
 ### `Rafman.start()`
-Starts the ticking. Every tick is requested using requestAnimationFrame. On ever tick your registered callbacks will be executed.
+Start requesting frames using requestAnimationFrame until all the work is done.
 
 ### `Rafman.pause()`
-Stops the ticking.
+Stop requesting frames.
 
 ### `Rafman.once([id, ]callback, [args, ...])`
-Register a callback to be executed only on the next tick. This is particularly useful to throttle events.
+Register a callback to be executed only on the next frame. This is particularly useful to throttle events.
 
 	Rafman.once(function() {
 		// do something
@@ -39,7 +39,7 @@ In case of an event handler you could do something like the following. Note that
 	}
 
 ### `Rafman.always([id, ]callback)`
-Register a callback to be called on every tick. Useful if you are constantly animating like in a game.
+Register a callback to be called on every frame. Useful if you are constantly animating like in a game.
 
 ### `Rafman.cancel(id|callback)`
 Cancel the execution of a callback. It's possible to pass the callback itself, or the id it was registered with. This function cancels callbacks registered with both `once` and `always`.
