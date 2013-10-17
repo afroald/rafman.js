@@ -1,4 +1,4 @@
-// Rafman 0.1.0
+// Rafman 0.1.1
 // (C) 2013 Roald Hacquebord
 // This code is licensed under the MIT license.
 
