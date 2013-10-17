@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rafman Test</title>
+        <style>
+            .cube {
+                width: 50px;
+                height: 50px;
+
+                background-color: blue;
+            }
+
+            .always {
+                width: 50px;
+                height: 50px;
+
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <input id="slider1" type="range" value="0">
+        <div class="cube"></div>
+        <div class="always"></div>
+
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="clear">Clear</button>
+        <button id="cancel-always">Cancel always</button>
+
+        <script src="rafman.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+
+        $(function() {
+            $('#start').on('click', function() {
+                Rafman.start();
+            });
+            $('#pause').on('click', function() {
+                Rafman.pause();
+            });
+            $('#clear').on('click', function() {
+                Rafman.clear();
+            });
+
+
+            var $slider1 = $('#slider1');
+            var $cube = $('.cube');
+            var slider1c = function(event) {
+                console.log(event);
+                $cube.css('transform', 'translateX(' + $slider1.val() * 2 + 'px)');
+            }
+            $slider1.on('change', function(event) {
+                Rafman.once(slider1c, event);
+            });
+
+            $always = $('.always');
+            var x = 0;
+            var alwayscallback = function() {
+                x++;
+                if (x > 100) {
+                    x = 0;
+                }
+                $always.css('transform', 'translateX(' + x * 2 + 'px)');
+            };
+            // Rafman.always(alwayscallback);
+
+            $('#cancel-always').on('click', function() {
+                Rafman.cancel(alwayscallback);
+            });
+        });
+
+        </script>
+    </body>
+</html>
