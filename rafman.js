@@ -144,12 +144,12 @@ Rafman = (function() {
             return;
         }
 
-        // Register the callback
-        callbacks.push(callback);
+        // Register the callback and get the index at which it was placed.
+        var index = callbacks.push(callback) - 1;
 
         // Register the id if given
         if (id !== null) {
-            ids[callbacks.indexOf(callback)] = id;
+            ids[index] = id;
         }
 
         // Start doing some work!
