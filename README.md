@@ -47,6 +47,13 @@ Cancel the execution of a callback. It's possible to pass the callback itself, o
 ### `Rafman.clear()`
 Clear all registered callbacks.
 
+## requestAnimationFrame browser support
+In short, the latest versions of all browsers support requestAnimation frame. IE9 and lower don't support it.
+
+[See requestAnimationFrame support on caniuse.com](http://caniuse.com/#feat=requestanimationframe)
+
+You might want to include a [polyfill for requestAnimationFrame](https://gist.github.com/paulirish/1579671).
+
 ## To do
 - Add tests because `test.html` is a mess. requestAnimationFrame is kinda hard to test. Any tips?
 
